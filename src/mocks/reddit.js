@@ -109,3 +109,11 @@ export const overallSentiment = [
   { name: 'Neutral', value: 29, color: '#6b7280' },
   { name: 'Negative', value: 25, color: '#ef4444' }
 ];
+
+
+export const platforms = [
+  { id: 'reddit', name: 'Reddit', available: true },
+  { id: 'instagram', name: 'Instagram', available: false },
+  { id: 'twitter', name: 'Twitter', available: false },
+  { id: 'facebook', name: 'Facebook', available: false }
+];

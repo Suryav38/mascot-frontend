@@ -12,7 +12,6 @@ const defaultBrandKnowledge = {
 
 export const useAppStore = create((set) => ({
   // UI State
-  activeView: 'reddit',
   isVisible: false,
   
   // Brand Knowledge
@@ -36,9 +35,6 @@ export const useAppStore = create((set) => ({
   
   useBrandKnowledge: true,
   
-  // Actions
-  setActiveView: (view) => set({ activeView: view }),
-  setIsVisible: (visible) => set({ isVisible: visible }),
   
   setBrandKnowledge: (knowledge) => set({ brandKnowledge: knowledge }),
   

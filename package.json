@@ -12,9 +12,12 @@
   "dependencies": {
     "22": "^0.0.0",
     "@jridgewell/gen-mapping": "^0.3.13",
+    "@stackframe/react": "^2.8.43",
+    "@stackframe/stack": "^2.8.44",
     "lucide-react": "^0.545.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.4",
     "recharts": "^3.3.0",
     "zustand": "^5.0.8"
   },

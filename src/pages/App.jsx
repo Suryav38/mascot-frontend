@@ -1,45 +1,26 @@
 // src/pages/App.jsx
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useUser } from '@stackframe/stack';
 import { AppShell } from '../components/layout/AppShell';
-import { RedditDashboard } from '../components/reddit/RedditDashboard';
-import { RedditPostDetail } from '../components/reddit/RedditPostDetail';
-import { KnowledgePage } from '../features/knowledge/KnowledgePage';
-import { AutoReplyPage } from '../features/autoreply/AutoReplyPage';
-import { useAppStore } from '../app/store';
+import { Dashboard } from './Dashboard';
+import { AnalyzePage } from './AnalyzePage';
+import { MascotBotPage } from './MascotBotPage';
+import { KnowledgePage } from './KnowledgePage';
+import { Settings } from './Settings';
 
 export const App = () => {
-  const { activeView } = useAppStore();
-  const [selectedPost, setSelectedPost] = useState(null);
-
-  // Handler for when a post is clicked
-  const handlePostClick = (post) => {
-    console.log('Post clicked:', post); // Debug log
-    setSelectedPost(post);
-  };
-
-  // Handler for going back to dashboard
-  const handleBackToDashboard = () => {
-    console.log('Going back to dashboard'); // Debug log
-    setSelectedPost(null);
-  };
+  const user = useUser({ or: 'redirect' });
 
   return (
     <AppShell>
-      {/* Show Post Detail if a post is selected AND we're on Reddit view */}
-      {activeView === 'reddit' && selectedPost ? (
-        <RedditPostDetail 
-          post={selectedPost} 
-          onBack={handleBackToDashboard}
-        />
-      ) : (
-        <>
-          {activeView === 'knowledge' && <KnowledgePage />}
-          {activeView === 'autoreply' && <AutoReplyPage />}
-          {activeView === 'reddit' && (
-            <RedditDashboard onPostClick={handlePostClick} />
-          )}
-        </>
-      )}
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/analyze" element={<AnalyzePage />} />
+        <Route path="/mascot" element={<MascotBotPage />} />
+        <Route path="/knowledge" element={<KnowledgePage />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
     </AppShell>
   );
 };
